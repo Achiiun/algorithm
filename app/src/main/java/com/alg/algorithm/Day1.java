@@ -10,26 +10,32 @@ package com.alg.algorithm;
 public class Day1 {
 
   public static void main(String[] args) {
+    while (true) {
+      System.out.println("시험 점수를 입력하세요.");
 
-    System.out.println("시험 점수를 입력하세요.");
+      java.util.Scanner scoreInput = new java.util.Scanner(System.in);
+      int score = scoreInput.nextInt();
 
-    java.util.Scanner gradeInput = new java.util.Scanner(System.in);
-    int grade = gradeInput.nextInt();
-    
-    if (0 <= grade && grade <= 100) {
-      if (grade >= 90) {
-        System.out.println("A");
-      } else if (grade >= 80) {
-        System.out.println("B");
-      } else if (grade >= 70) {
-        System.out.println("C");
-      } else if (grade >= 60) {
-        System.out.println("D");
+      if (0 <= score && score <= 100) {
+        if (score >= 90) {
+          System.out.println("당신의 점수는 A 입니다.");
+          break;
+        } else if (score >= 80) {
+          System.out.println("당신의 점수는 B 입니다.");
+          break;
+        } else if (score >= 70) {
+          System.out.println("당신의 점수는 C 입니다.");
+          break;
+        } else if (score >= 60) {
+          System.out.println("당신의 점수는 D 입니다.");
+          break;
+        } else {
+          System.out.println("당신의 점수는 F 입니다.");
+          break;
+        }
       } else {
-        System.out.println("F");
+        System.out.println("0~100사이의 값을 입력해주세요.");
       }
-    } else {
-      System.out.println("0~100사이의 값을 입력해주세요.");
-    }
+    } //while
   }
 }
