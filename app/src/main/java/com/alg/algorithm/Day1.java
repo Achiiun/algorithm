@@ -1,4 +1,4 @@
-package com.acu.algorithm;
+package com.alg.algorithm;
 
 public class Baekjoon9498 {
 
