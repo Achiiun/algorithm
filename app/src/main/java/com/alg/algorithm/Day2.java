@@ -20,15 +20,15 @@ public class Day2 {
 
     str = keyboardInput.nextLine();
 
-    for (int i = 0; i < str.length(); i++) {
+    for (int i = 0; i < str.length(); i++) {   // 문자열에서 공백의 개수를 추출
       if(str.charAt(i) == ' ') {
         result++;
       }
     }
-    if (str.charAt(0) != ' ' && str.charAt(str.length() - 1) != ' ') {
+    if (str.charAt(0) != ' ' && str.charAt(str.length() - 1) != ' ') {   // 첫 번째와 마지막 문자가 공백이 아닐 경우
       result++;
     }
-    if (str.charAt(0) == ' ' && str.charAt(str.length() - 1) == ' ') {
+    if (str.charAt(0) == ' ' && str.charAt(str.length() - 1) == ' ') {   // 첫 번째와 마지막 문자가 공백일 경우
       result--;
     }
     System.out.printf("단어의 개수는 %d개 입니다.",result);
