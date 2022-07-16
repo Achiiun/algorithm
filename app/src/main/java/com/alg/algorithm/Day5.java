@@ -13,7 +13,7 @@
     A = input.nextInt();
     B = input.nextInt();
 
-    System.out.println(A - B);
+    System.out.println(A + B);
   }
 }
  */
@@ -77,7 +77,7 @@ public class Day5 {
     A = input.nextInt();
     B = input.nextInt();
 
-    System.out.println(A + B);
+    System.out.println(A - B);
   }
 }
  */
