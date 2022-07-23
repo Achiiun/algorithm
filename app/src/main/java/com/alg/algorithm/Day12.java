@@ -1,0 +1,28 @@
+package com.alg.algorithm;
+
+//출처: codefights.com
+//
+//숫자 배열에서 각 이웃하는 숫자간의 차가 가장 큰 것을 알아내기
+//예)
+//[2, 4, 1, 0] => 3
+//
+//[시간 복잡도]
+//- ?
+public class Day12 {
+
+  public static void main(String[] args) {
+    System.out.println(maxDiff(new int[]{2, 4, 1, 0}) == 3);
+    System.out.println(maxDiff(new int[]{3, 1, 4, 3, 8, 7}) == 5);
+  }
+
+  static int maxDiff(int[] values) {
+    int answer = 1;
+    for (int i = 0; i < values.length; i++) { 
+      if (answer < Math.abs(values[i]-values[i-1])) { // values 배열의 i번째 값과 i-1번째 값의 차이가 answer보다 크다면
+        answer = values[i] - values[i-1]; // 그 값의 차이를 answer에 저장한다.
+      }
+    }
+    return answer;
+
+  }
+}
