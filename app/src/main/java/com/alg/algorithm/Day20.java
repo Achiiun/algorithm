@@ -89,6 +89,4 @@ public class Day20 {
     }
     return "Improper";
   }
-
-
 }
