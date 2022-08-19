@@ -44,7 +44,6 @@ public class Day38 {
     }
   
     static int visitsOnCircularRoad(int N, int[] visitsOrder) {
-      // 이 메서드를 완성하시오!
       int currentPosition = 1;
       int minutes = 0;
       
