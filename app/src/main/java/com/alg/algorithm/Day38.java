@@ -44,6 +44,7 @@ public class Day38 {
     }
   
     static int visitsOnCircularRoad(int N, int[] visitsOrder) {
+      
       int currentPosition = 1;
       int minutes = 0;
       
