@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.StringTokenizer;
 
 /*
- * 2022-09-18(Sun)
+ * 2022-09-19(Mon)
  * baokjun10814: 나이순 정렬 
  * 문제: 온라인 저지에 가입한 사람들의 나이와 이름이 가입한 순서대로 주어진다.
  *       이때, 회원들을 나이가 증가하는 순으로, 
