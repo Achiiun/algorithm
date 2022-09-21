@@ -10,27 +10,22 @@
 
 package com.alg.algorithm;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
 public class Day2 {
-  public static void main(String[] args) {
-    System.out.println("문자열을 입력하시오.");
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
-    String str;
-    int result = 0;
+    StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-    str = keyboardInput.nextLine();
-
-    for (int i = 0; i < str.length(); i++) {   // 문자열에서 공백의 개수를 추출
-      if(str.charAt(i) == ' ') {
-        result++;
-      }
+    int count = 0;
+    while (st.hasMoreTokens()) {
+      String word = st.nextToken();
+      count++;
     }
-    if (str.charAt(0) != ' ' && str.charAt(str.length() - 1) != ' ') {   // 첫 번째와 마지막 문자가 공백이 아닐 경우
-      result++;
-    }
-    if (str.charAt(0) == ' ' && str.charAt(str.length() - 1) == ' ') {   // 첫 번째와 마지막 문자가 공백일 경우
-      result--;
-    }
-    System.out.printf("단어의 개수는 %d개 입니다.",result);
+    System.out.println(count);
   }
 }
