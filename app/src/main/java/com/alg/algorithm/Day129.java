@@ -22,7 +22,7 @@ public class Day129 {
     int num1 = Integer.parseInt(st.nextToken());
     int num2 = Integer.parseInt(st.nextToken());
 
-    int answer = 0;
+    int answer;
 
     answer = num1 / num2;
 
