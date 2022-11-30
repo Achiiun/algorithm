@@ -1,58 +1,101 @@
 package com.alg.algorithm;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
 /*
- * 2022-11-29(Tue)
- * baokjun10844: 쉬운 계단 수
- * 문제: 45656이란 수를 보자.
- *       이 수는 인접한 모든 자리의 차이가 1이다. 이런 수를 계단 수라고 한다.
- *       N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구해보자. 0으로 시작하는 수는 계단수가 아니다.
- * 입력: 첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은 자연수이다.
- * 출력: 첫째 줄에 정답을 1,000,000,000으로 나눈 나머지를 출력한다.
+ * 2022-11-30(Wed)
+ * baokjun18258: 큐 2
+ * 문제: 정수를 저장하는 큐를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
+ *       명령은 총 여섯 가지이다.
+ *       push X: 정수 X를 큐에 넣는 연산이다.
+ *       pop: 큐에서 가장 앞에 있는 정수를 빼고, 그 수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+ *       size: 큐에 들어있는 정수의 개수를 출력한다.
+ *       empty: 큐가 비어있으면 1, 아니면 0을 출력한다.
+ *       front: 큐의 가장 앞에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+ *       back: 큐의 가장 뒤에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+ * 입력: 첫째 줄에 주어지는 명령의 수 N (1 ≤ N ≤ 2,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 명령이 하나씩 주어진다.
+ *       주어지는 정수는 1보다 크거나 같고, 100,000보다 작거나 같다. 문제에 나와있지 않은 명령이 주어지는 경우는 없다.
+ * 출력: 출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.
  */
 
 public class Day132 {
 
-  static int N;
-  static long mod = 1000000000;
+  public static void main(String[] args) throws IOException {
 
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    N = sc.nextInt();
-    long dp[][] = new long[N+1][10];
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringBuilder sb = new StringBuilder();
 
-    /* 첫번째 자릿수는 경우의 수가 하나 뿐임 */
-    for(int i=1; i<10; i++) {
-      dp[1][i] = 1;
-    }
+    Deque<Integer> q = new LinkedList<>();
 
+    int N = Integer.parseInt(br.readLine());
 
-    /* 두번째 자릿수부터 N번째 자릿수까지 탐색 */
-    for(int i=2; i<=N; i++) {
-      /* 현재 자릿값을 0부터 9까지 탐색*/
-      for(int j=0; j<10; j++) {
-        // 자릿값이 9라면 이전 자릿값은 8만 가능
-        if(j == 9) {    
-          dp[i][9] = dp[i-1][8]%mod;
-        }
-        // 자릿값이 0이라면 이전 자릿값은 1만 가능
-        else if(j==0) {    
-          dp[i][0] = dp[i-1][1] % mod;
-        }
-        // 그 외는 현재 자릿값의 -1, +1 가능
-        else {    
-          dp[i][j] = (dp[i-1][j-1]+ dp[i-1][j+1])%mod;
-        }
+    StringTokenizer command;
+
+    while(N-- > 0) {
+      command = new StringTokenizer(br.readLine(), " ");  // 문자열 분리 
+
+      switch(command.nextToken()) {   
+
+        case "push":
+          // offer는 큐의 맨 뒤에 요소를 추가한다.
+          q.offer(Integer.parseInt(command.nextToken())); 
+          break;
+
+        case "pop" :
+          /*
+           *  poll은 가장 앞에 있는 요소를 삭제하며
+           *  삭제할 원소가 없을 경우 예외를 던지는 것이 아닌 null을 반환한다.
+           */
+          Integer item = q.poll();    
+          if(item == null) {
+            sb.append(-1).append('\n');
+          }
+          else {
+            sb.append(item).append('\n');
+          }
+          break;
+
+        case "size":    
+          sb.append(q.size()).append('\n');
+          break;
+
+        case "empty":
+          if(q.isEmpty()) {
+            sb.append(1).append('\n');
+          }
+          else {
+            sb.append(0).append('\n');
+          }
+          break;
+
+        case "front":
+          // peek()은 큐에 꺼낼 요소가 없을 경우 null을 반환한다.
+          Integer ite = q.peek();
+          if(ite == null) {
+            sb.append(-1).append('\n');
+          }
+          else {
+            sb.append(ite).append('\n');
+          }
+          break;
+
+        case "back":
+          // peekLast()은 큐에 꺼낼 요소가 없을 경우 null을 반환한다.
+          Integer it = q.peekLast();   
+          if(it == null) {
+            sb.append(-1).append('\n');
+          }
+          else {
+            sb.append(it).append('\n');
+          }
+          break;
       }
     }
-
-    long ans = 0;
-    for(int i=0; i<10; i++) {
-      ans += dp[N][i];
-    }
-
-    System.out.println(ans%mod);
+    System.out.println(sb);
   }
-
 }
