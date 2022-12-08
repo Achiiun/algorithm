@@ -23,7 +23,7 @@ import java.util.StringTokenizer;
  * 출력: 1번 컴퓨터가 웜 바이러스에 걸렸을 때, 1번 컴퓨터를 통해 웜 바이러스에 걸리게 되는 컴퓨터의 수를 첫째 줄에 출력한다.
  */
 
-public class Day133 {
+public class Day135 {
 
     static boolean[] check;
     static int[][] arr;
